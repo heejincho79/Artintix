@@ -1,0 +1,72 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: inquiries
+    // Document ID: auto-generated
+    // Fields:
+    //   - name: string (required, 1-100 chars)
+    //   - email: string (required, valid email)
+    //   - company: string (required, 1-100 chars)
+    //   - interest: string (required, 1-100 chars)
+    //   - wantsAudit: bool (optional)
+    //   - createdAt: timestamp (required)
+    //   - status: string (required, enum: ['new', 'contacted', 'closed'])
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+         (request.auth.token.email == "heejin.c@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidInquiry(data) {
+      return data.keys().hasAll(['name', 'email', 'company', 'interest', 'createdAt', 'status']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             isValidEmail(data.email) &&
+             data.company is string && data.company.size() > 0 && data.company.size() <= 100 &&
+             data.interest is string && data.interest.size() > 0 && data.interest.size() <= 100 &&
+             data.createdAt is timestamp &&
+             data.status in ['new', 'contacted', 'closed'] &&
+             (!('wantsAudit' in data) || data.wantsAudit is bool);
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /inquiries/{inquiryId} {
+      // Public can create inquiries (leads)
+      allow create: if isValidInquiry(request.resource.data) && 
+                      request.resource.data.status == 'new' &&
+                      request.resource.data.createdAt == request.time;
+      
+      // Only admins can read or update inquiries
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      // Only admins can create/update user roles
+      allow write: if isAdmin();
+    }
+  }
+}

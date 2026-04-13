@@ -1,0 +1,31 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-neon: #00A3FF;
+  --color-brand-dark: #050B15;
+  --color-brand-blue: #00E5FF;
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-brand-dark antialiased;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-lg border border-gray-100 rounded-xl shadow-sm;
+}
+
+.neon-glow {
+  box-shadow: 0 10px 30px rgba(0, 163, 255, 0.15);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 10px rgba(0, 163, 255, 0.3);
+}
