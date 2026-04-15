@@ -104,6 +104,11 @@ export const translations = {
       title2: "대한민국, 미국, 싱가포르",
       desc: "알틴틱스는 대한민국, 미국, 싱가포르를 연결하는 글로벌 기술 네트워크를 구축하고 있습니다. 각 거점을 중심으로 아시아와 북미 시장의 에너지 트렌드를 실시간으로 반영하고 현지 최적화 솔루션을 공급합니다.",
       cities: ["대한민국", "미국", "싱가포르"],
+      map: {
+        korea: "대한민국",
+        usa: "미국",
+        singapore: "싱가포르"
+      },
       partnerBadge: "Technical Partners",
       partnerTitle: "국내외 최고 수준의 기술 협력 네트워크",
     },
@@ -246,6 +251,11 @@ export const translations = {
       title2: "Korea, USA, Singapore",
       desc: "Artintix is building a global technology network connecting Korea, USA, and Singapore. Each hub reflects real-time energy trends and supplies optimized solutions.",
       cities: ["South Korea", "USA", "Singapore"],
+      map: {
+        korea: "Korea",
+        usa: "USA",
+        singapore: "Singapore"
+      },
       partnerBadge: "Technical Partners",
       partnerTitle: "World-Class Technical Collaboration Network",
     },

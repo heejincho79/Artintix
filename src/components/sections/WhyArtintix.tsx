@@ -37,10 +37,98 @@ export function WhyArtintix() {
             </div>
           </div>
           <div className="relative">
-             <div className="aspect-square rounded-full border border-gray-100 absolute inset-0 animate-spin-slow" />
-             <div className="aspect-square rounded-full border border-gray-100 absolute inset-10 animate-reverse-spin-slow" />
-             <div className="relative z-10 flex items-center justify-center h-full">
-                <Globe2 className="w-48 h-48 text-brand-neon opacity-20" />
+             <div className="aspect-square rounded-full border border-gray-100 absolute inset-0 animate-spin-slow opacity-10" />
+             <div className="aspect-square rounded-full border border-gray-100 absolute inset-10 animate-reverse-spin-slow opacity-10" />
+             <div className="relative z-10 w-full aspect-[2/1] flex items-center justify-center overflow-hidden rounded-2xl bg-gray-50/50 border border-gray-100">
+                {/* World Map Image */}
+                <img 
+                   src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000" 
+                   alt="World Map" 
+                   className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale"
+                   referrerPolicy="no-referrer"
+                />
+                
+                <svg viewBox="0 0 1000 500" className="absolute inset-0 w-full h-full">
+                   {/* Connection Arcs */}
+                   <defs>
+                      <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                         <stop offset="0%" stopColor="#00A3FF" stopOpacity="0" />
+                         <stop offset="50%" stopColor="#00A3FF" stopOpacity="1" />
+                         <stop offset="100%" stopColor="#00A3FF" stopOpacity="0" />
+                      </linearGradient>
+                      <filter id="glow">
+                         <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                         <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                         </feMerge>
+                      </filter>
+                   </defs>
+
+                   {/* Korea to USA */}
+                   <motion.path
+                      d="M830,180 Q490,50 150,180"
+                      fill="none"
+                      stroke="url(#line-gradient)"
+                      strokeWidth="2"
+                      strokeDasharray="1000"
+                      initial={{ strokeDashoffset: 1000 }}
+                      animate={{ strokeDashoffset: -1000 }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      filter="url(#glow)"
+                   />
+
+                   {/* Korea to Singapore */}
+                   <motion.path
+                      d="M830,180 Q800,230 780,280"
+                      fill="none"
+                      stroke="url(#line-gradient)"
+                      strokeWidth="2"
+                      strokeDasharray="200"
+                      initial={{ strokeDashoffset: 200 }}
+                      animate={{ strokeDashoffset: -200 }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      filter="url(#glow)"
+                   />
+
+                   {/* Singapore to USA */}
+                   <motion.path
+                      d="M780,280 Q450,400 150,180"
+                      fill="none"
+                      stroke="url(#line-gradient)"
+                      strokeWidth="2"
+                      strokeDasharray="1000"
+                      initial={{ strokeDashoffset: 1000 }}
+                      animate={{ strokeDashoffset: -1000 }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "linear", delay: 1 }}
+                      filter="url(#glow)"
+                   />
+
+                   {/* Location Markers */}
+                   {[
+                      { id: 'korea', x: 830, y: 180, label: t.trust.map.korea },
+                      { id: 'usa', x: 150, y: 180, label: t.trust.map.usa },
+                      { id: 'singapore', x: 780, y: 280, label: t.trust.map.singapore }
+                   ].map(loc => (
+                      <g key={loc.id}>
+                         <motion.circle 
+                            cx={loc.x} cy={loc.y} r="4" 
+                            fill="#00A3FF" 
+                            initial={{ scale: 0 }}
+                            animate={{ scale: [1, 1.5, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                         />
+                         <circle cx={loc.x} cy={loc.y} r="12" fill="#00A3FF" opacity="0.1" />
+                         <text 
+                            x={loc.x} y={loc.y + 20} 
+                            textAnchor="middle" 
+                            className="text-[10px] font-mono font-bold fill-brand-dark"
+                         >
+                            {loc.label}
+                         </text>
+                      </g>
+                   ))}
+                </svg>
              </div>
           </div>
         </div>

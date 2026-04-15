@@ -29,8 +29,85 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
       {/* Background Visual */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white z-10" />
+        
+        {/* Animated Waves */}
+        <div className="absolute inset-0 opacity-40">
+          <svg className="absolute w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 1000">
+            {/* Filled Waves */}
+            <motion.path
+              d="M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,1000 L0,1000 Z"
+              fill="url(#wave-gradient-1)"
+              animate={{ 
+                d: [
+                  "M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,1000 L0,1000 Z",
+                  "M0,150 C200,50 400,250 600,150 C800,50 900,250 1000,150 L1000,1000 L0,1000 Z",
+                  "M0,100 C150,200 350,0 500,100 C650,200 850,0 1000,100 L1000,1000 L0,1000 Z"
+                ]
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M0,200 C200,300 400,100 600,200 C800,300 900,100 1000,200 L1000,1000 L0,1000 Z"
+              fill="url(#wave-gradient-2)"
+              animate={{ 
+                d: [
+                  "M0,200 C200,300 400,100 600,200 C800,300 900,100 1000,200 L1000,1000 L0,1000 Z",
+                  "M0,250 C150,150 350,350 550,250 C750,150 850,350 1000,250 L1000,1000 L0,1000 Z",
+                  "M0,200 C200,300 400,100 600,200 C800,300 900,100 1000,200 L1000,1000 L0,1000 Z"
+                ]
+              }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            />
+
+            {/* Stroke Lines (More dynamic like the image) */}
+            <motion.path
+              d="M0,120 C200,220 400,20 600,120 C800,220 900,20 1000,120"
+              stroke="#00E5FF"
+              strokeWidth="2"
+              fill="none"
+              opacity="0.3"
+              animate={{ 
+                d: [
+                  "M0,120 C200,220 400,20 600,120 C800,220 900,20 1000,120",
+                  "M0,170 C250,70 450,270 650,170 C850,70 950,270 1000,170",
+                  "M0,120 C200,220 400,20 600,120 C800,220 900,20 1000,120"
+                ]
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+              d="M0,180 C150,280 350,80 550,180 C750,280 850,80 1000,180"
+              stroke="#00A3FF"
+              strokeWidth="1"
+              fill="none"
+              opacity="0.2"
+              animate={{ 
+                d: [
+                  "M0,180 C150,280 350,80 550,180 C750,280 850,80 1000,180",
+                  "M0,230 C200,130 400,330 600,230 C800,130 900,330 1000,230",
+                  "M0,180 C150,280 350,80 550,180 C750,280 850,80 1000,180"
+                ]
+              }}
+              transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+            />
+
+            <defs>
+              <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.15" />
+                <stop offset="50%" stopColor="#00A3FF" stopOpacity="0.05" />
+                <stop offset="100%" stopColor="#00E5FF" stopOpacity="0.15" />
+              </linearGradient>
+              <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#00A3FF" stopOpacity="0.05" />
+                <stop offset="50%" stopColor="#00E5FF" stopOpacity="0.15" />
+                <stop offset="100%" stopColor="#00A3FF" stopOpacity="0.05" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-neon/40 rounded-full blur-[120px] animate-pulse" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-[120px] animate-pulse delay-700" />

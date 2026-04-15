@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Globe } from "lucide-react";
 import { cn } from "@/src/lib/utils";
 import { useLanguage } from "../../lib/LanguageContext";
+import { Logo } from "../ui/Logo";
 
 export function Navbar() {
   const { lang, setLang, t } = useLanguage();
@@ -45,12 +46,7 @@ export function Navbar() {
           className="flex items-center gap-2 cursor-pointer group"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <img 
-            src="https://storage.googleapis.com/static.antigravity.ai/projects/76afa242-8f02-41e8-b8c3-b2fee7e3e62e/attachments/63e1859c-8686-455b-801a-698f10887e0b.png" 
-            alt="Artintix Logo" 
-            className="h-10 w-auto object-contain"
-            referrerPolicy="no-referrer"
-          />
+          <Logo className="h-8" />
         </div>
 
         {/* Desktop Menu */}
