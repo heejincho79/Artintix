@@ -1,56 +1,59 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Server, Building2, Zap, Factory, Sprout } from "lucide-react";
-
-const INDUSTRIES = [
-  {
-    id: "datacenter",
-    name: "데이터센터",
-    icon: Server,
-    title: "PUE 1.5 이하 달성",
-    desc: "AI 기반 냉각 예측 제어와 서버 부하 분산 최적화로 데이터센터 운영 효율을 극대화 / 실시간 열부하 예측으로 냉각 시스템을 선제적으로 제어해 불필요한 에너지 소비를 제거",
-    metric: "35%",
-    metricLabel: "냉각 비용 절감",
-  },
-  {
-    id: "building",
-    name: "건물/시설",
-    icon: Building2,
-    title: "빌딩 에너지 관리(BEMS)를 AI로 고도화",
-    desc: "HVAC·조명·엘리베이터 등 설비 전반을 AI로 통합 제어 / 재실 패턴과 날씨 예보를 반영해 냉난방을 선제적으로 최적화하고 피크 수요를 분산.",
-    metric: "25~30%",
-    metricLabel: "에너지 소비 절감",
-  },
-  {
-    id: "utility",
-    name: "전력/유틸리티",
-    icon: Zap,
-    title: "재생에너지 발전 예측 및 계통 안정화 지원",
-    desc: "태양광·풍력 발전량을 AI로 단기·중기 예측 / 수요 반응(DR) 최적화로 전력 구매 비용을 절감. 이상 부하를 실시간 감지해 계통 안정성을 높임.",
-    metric: "90%+",
-    metricLabel: "예측 정확도",
-  },
-  {
-    id: "factory",
-    name: "제조",
-    icon: Factory,
-    title: "생산 일정과 연동한 에너지 최적 운영",
-    desc: "생산 계획·설비 가동률·에너지 데이터를 통합 분석해 최적 운전 조건을 도출 / 예지보전으로 설비 다운타임과 에너지 손실을 동시에 줄입.",
-    metric: "20%",
-    metricLabel: "피크 전력 감소",
-  },
-  {
-    id: "farm",
-    name: "농업",
-    icon: Sprout,
-    title: "스마트팜 에너지·환경 통합 최적화",
-    desc: "온실 내 온도·습도·CO₂·조도를 AI로 통합 제어해 작물 생산성과 에너지 효율을 동시에 높임 / 계절·날씨 변화에 자동 적응하는 학습 모델로 연중 최적 환경을 유지.",
-    metric: "30%",
-    metricLabel: "냉난방비 절감",
-  },
-];
+import { useLanguage } from "../../lib/LanguageContext";
 
 export function IndustrySolutions() {
+  const { t } = useLanguage();
+
+  const INDUSTRIES = [
+    {
+      id: "datacenter",
+      name: t.industry.items.datacenter.name,
+      icon: Server,
+      title: t.industry.items.datacenter.title,
+      desc: t.industry.items.datacenter.desc,
+      metric: "35%",
+      metricLabel: t.industry.items.datacenter.metricLabel,
+    },
+    {
+      id: "building",
+      name: t.industry.items.building.name,
+      icon: Building2,
+      title: t.industry.items.building.title,
+      desc: t.industry.items.building.desc,
+      metric: "25~30%",
+      metricLabel: t.industry.items.building.metricLabel,
+    },
+    {
+      id: "utility",
+      name: t.industry.items.utility.name,
+      icon: Zap,
+      title: t.industry.items.utility.title,
+      desc: t.industry.items.utility.desc,
+      metric: "90%+",
+      metricLabel: t.industry.items.utility.metricLabel,
+    },
+    {
+      id: "factory",
+      name: t.industry.items.factory.name,
+      icon: Factory,
+      title: t.industry.items.factory.title,
+      desc: t.industry.items.factory.desc,
+      metric: "20%",
+      metricLabel: t.industry.items.factory.metricLabel,
+    },
+    {
+      id: "farm",
+      name: t.industry.items.farm.name,
+      icon: Sprout,
+      title: t.industry.items.farm.title,
+      desc: t.industry.items.farm.desc,
+      metric: "30%",
+      metricLabel: t.industry.items.farm.metricLabel,
+    },
+  ];
+
   const [activeTab, setActiveTab] = React.useState(INDUSTRIES[0].id);
 
   const activeData = INDUSTRIES.find((i) => i.id === activeTab)!;
@@ -59,8 +62,8 @@ export function IndustrySolutions() {
     <section id="industry" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-brand-dark">산업별 솔루션</h2>
-          <p className="text-gray-500">각 산업 분야에 특화된 AI 모델로 실질적인 성과를 증명합니다.</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-brand-dark">{t.industry.title}</h2>
+          <p className="text-gray-500">{t.industry.desc}</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -271,7 +274,7 @@ export function IndustrySolutions() {
               {/* Status Badge */}
               <div className="absolute bottom-6 right-6 px-4 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-brand-neon animate-pulse" />
-                <span className="text-[10px] font-mono text-white uppercase tracking-widest">AI_Optimization_Active</span>
+                <span className="text-[10px] font-mono text-white uppercase tracking-widest">{t.industry.status}</span>
               </div>
             </div>
           </div>

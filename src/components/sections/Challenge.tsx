@@ -1,34 +1,37 @@
 import { motion } from "motion/react";
 import { TrendingUp, ShieldAlert, Zap } from "lucide-react";
-
-const CHALLENGES = [
-  {
-    title: "산업용 전기요금 상승",
-    value: "연 20%↑",
-    desc: "지속적인 에너지 비용 부담 가중",
-    icon: TrendingUp,
-    color: "text-red-400",
-    bg: "bg-red-400/10",
-  },
-  {
-    title: "K-ETS 유상할당 확대",
-    value: "2026년~",
-    desc: "탄소 배출 규제 및 비용 압박 심화",
-    icon: ShieldAlert,
-    color: "text-orange-400",
-    bg: "bg-orange-400/10",
-  },
-  {
-    title: "에너지 낭비율",
-    value: "평균 30%",
-    desc: "비효율적인 운영으로 인한 손실",
-    icon: Zap,
-    color: "text-brand-neon",
-    bg: "bg-brand-neon/10",
-  },
-];
+import { useLanguage } from "../../lib/LanguageContext";
 
 export function Challenge() {
+  const { t } = useLanguage();
+  
+  const CHALLENGES = [
+    {
+      title: t.challenge.items[0].title,
+      value: t.challenge.items[0].value,
+      desc: t.challenge.items[0].desc,
+      icon: TrendingUp,
+      color: "text-red-400",
+      bg: "bg-red-400/10",
+    },
+    {
+      title: t.challenge.items[1].title,
+      value: t.challenge.items[1].value,
+      desc: t.challenge.items[1].desc,
+      icon: ShieldAlert,
+      color: "text-orange-400",
+      bg: "bg-orange-400/10",
+    },
+    {
+      title: t.challenge.items[2].title,
+      value: t.challenge.items[2].value,
+      desc: t.challenge.items[2].desc,
+      icon: Zap,
+      color: "text-brand-neon",
+      bg: "bg-brand-neon/10",
+    },
+  ];
+
   return (
     <section id="challenge" className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -39,8 +42,8 @@ export function Challenge() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-brand-dark"
           >
-            에너지 비효율, <br className="md:hidden" />
-            <span className="text-gray-400">더 이상 방치할 수 없습니다</span>
+            {t.challenge.title1} <br className="md:hidden" />
+            <span className="text-gray-400">{t.challenge.title2}</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -49,8 +52,7 @@ export function Challenge() {
             transition={{ delay: 0.1 }}
             className="text-gray-500 max-w-2xl mx-auto"
           >
-            급변하는 에너지 시장과 강화되는 환경 규제 속에서, 
-            데이터 기반의 최적화는 선택이 아닌 필수입니다.
+            {t.challenge.desc}
           </motion.p>
         </div>
 

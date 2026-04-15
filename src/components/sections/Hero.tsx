@@ -1,8 +1,10 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Activity, Cpu, Database, Zap, ShieldCheck } from "lucide-react";
+import { useLanguage } from "../../lib/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
   const [metrics, setMetrics] = React.useState({
     efficiency: 87.4,
     saving: 31.2,
@@ -51,31 +53,30 @@ export function Hero() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-neon/20 border border-brand-neon/30 text-brand-dark text-xs font-bold mb-6">
             <Activity className="w-3 h-3" />
-            <span>AI-POWERED ENERGY OPTIMIZATION</span>
+            <span>{t.hero.badge}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-8 text-brand-dark">
-            디지털 트윈과 AI로 구현하는 <br />
+            {t.hero.title1} <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-dark to-brand-neon">
-              지능형 에너지 시스템
+              {t.hero.title2}
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-xl mb-10 leading-relaxed">
-            알틴틱스는 복잡한 산업 현장의 에너지 데이터를 예측하고 실시간으로 제어하여, 
-            비용 절감과 탄소중립 실현을 가속화하는 핵심 AI 솔루션을 제공합니다.
+            {t.hero.desc}
           </p>
           <div className="flex flex-wrap gap-4">
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-brand-neon text-brand-dark font-bold rounded-lg hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-brand-neon/20"
             >
-              솔루션 문의하기
+              {t.hero.btnContact}
               <ArrowRight className="w-4 h-4" />
             </button>
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 bg-white border border-gray-200 text-brand-dark font-bold rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
             >
-              무료 에너지 진단 받기
+              {t.hero.btnAudit}
             </button>
           </div>
         </motion.div>
@@ -100,7 +101,7 @@ export function Hero() {
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse" />
-                  <span className="text-[10px] font-mono text-brand-neon">실시간 동작 중</span>
+                  <span className="text-[10px] font-mono text-brand-neon">{t.hero.status}</span>
                 </div>
                 <span className="text-[10px] font-mono text-gray-500">
                   {new Date().toLocaleTimeString('en-GB', { hour12: false })} UTC
@@ -122,7 +123,7 @@ export function Hero() {
                     </div>
                     <div className="text-center">
                       <p className="text-[10px] font-mono text-gray-500 uppercase">Step_01</p>
-                      <p className="text-[11px] font-bold text-white">센서 데이터 수집</p>
+                      <p className="text-[11px] font-bold text-white">{t.hero.step1}</p>
                     </div>
                   </div>
 
@@ -139,7 +140,7 @@ export function Hero() {
                     </div>
                     <div className="text-center">
                       <p className="text-[10px] font-mono text-brand-neon uppercase">Step_02</p>
-                      <p className="text-[11px] font-bold text-white">AI 판단 및 최적화</p>
+                      <p className="text-[11px] font-bold text-white">{t.hero.step2}</p>
                     </div>
                   </div>
 
@@ -156,7 +157,7 @@ export function Hero() {
                     </div>
                     <div className="text-center">
                       <p className="text-[10px] font-mono text-gray-500 uppercase">Step_03</p>
-                      <p className="text-[11px] font-bold text-white">자율 제어 출력</p>
+                      <p className="text-[11px] font-bold text-white">{t.hero.step3}</p>
                     </div>
                   </div>
                 </div>
@@ -165,7 +166,7 @@ export function Hero() {
                 <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
                   <div className="space-y-3">
                     <div className="flex justify-between items-end">
-                      <p className="text-[10px] font-mono text-gray-500 uppercase">Energy_Efficiency</p>
+                      <p className="text-[10px] font-mono text-gray-500 uppercase">{t.hero.efficiency}</p>
                       <div className="flex items-baseline gap-1">
                         <AnimatePresence mode="wait">
                           <motion.span 
@@ -192,7 +193,7 @@ export function Hero() {
 
                   <div className="space-y-3">
                     <div className="flex justify-between items-end">
-                      <p className="text-[10px] font-mono text-gray-500 uppercase">Cost_Savings</p>
+                      <p className="text-[10px] font-mono text-gray-500 uppercase">{t.hero.savings}</p>
                       <div className="flex items-baseline gap-1">
                         <AnimatePresence mode="wait">
                           <motion.span 
@@ -221,7 +222,7 @@ export function Hero() {
                 {/* Status Grid */}
                 <div className="grid grid-cols-3 gap-4 pt-6">
                   <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
-                    <p className="text-[9px] font-mono text-gray-500 uppercase mb-1">현재 절감량</p>
+                    <p className="text-[9px] font-mono text-gray-500 uppercase mb-1">{t.hero.reduction}</p>
                     <AnimatePresence mode="wait">
                       <motion.p 
                         key={metrics.reduction}
@@ -234,7 +235,7 @@ export function Hero() {
                     </AnimatePresence>
                   </div>
                   <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
-                    <p className="text-[9px] font-mono text-gray-500 uppercase mb-1">예측 정확도</p>
+                    <p className="text-[9px] font-mono text-gray-500 uppercase mb-1">{t.hero.accuracy}</p>
                     <AnimatePresence mode="wait">
                       <motion.p 
                         key={metrics.accuracy}
@@ -247,7 +248,7 @@ export function Hero() {
                     </AnimatePresence>
                   </div>
                   <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-center">
-                    <p className="text-[9px] font-mono text-gray-500 uppercase mb-1">CO₂ 감축</p>
+                    <p className="text-[9px] font-mono text-gray-500 uppercase mb-1">{t.hero.co2}</p>
                     <AnimatePresence mode="wait">
                       <motion.p 
                         key={metrics.co2}

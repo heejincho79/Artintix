@@ -10,8 +10,11 @@ import { Solutions } from "./components/sections/Solutions";
 import { IndustrySolutions } from "./components/sections/IndustrySolutions";
 import { WhyArtintix } from "./components/sections/WhyArtintix";
 import { Contact } from "./components/sections/Contact";
+import { LanguageProvider, useLanguage } from "./lib/LanguageContext";
 
-export default function App() {
+function AppContent() {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-white text-brand-dark selection:bg-brand-neon selection:text-brand-dark">
       <Navbar />
@@ -35,15 +38,23 @@ export default function App() {
             />
           </div>
           <div className="text-gray-400 text-sm">
-            © 2024 Artintix. All rights reserved.
+            {t.footer.rights}
           </div>
           <div className="flex gap-6 text-gray-400 text-sm">
-            <a href="#" className="hover:text-brand-dark transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-brand-dark transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-brand-dark transition-colors">{t.footer.privacy}</a>
+            <a href="#" className="hover:text-brand-dark transition-colors">{t.footer.terms}</a>
           </div>
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

@@ -2,19 +2,20 @@ import * as React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Globe } from "lucide-react";
 import { cn } from "@/src/lib/utils";
-
-const NAV_ITEMS = [
-  { name: "문제 인식", id: "challenge" },
-  { name: "핵심 기술", id: "solutions" },
-  { name: "산업별 솔루션", id: "industry" },
-  { name: "기술 및 신뢰", id: "trust" },
-  { name: "문의하기", id: "contact" },
-];
+import { useLanguage } from "../../lib/LanguageContext";
 
 export function Navbar() {
+  const { lang, setLang, t } = useLanguage();
   const [isOpen, setIsOpen] = React.useState(false);
-  const [lang, setLang] = React.useState<"KO" | "EN">("KO");
   const [scrolled, setScrolled] = React.useState(false);
+
+  const NAV_ITEMS = [
+    { name: t.nav.challenge, id: "challenge" },
+    { name: t.nav.solutions, id: "solutions" },
+    { name: t.nav.industry, id: "industry" },
+    { name: t.nav.trust, id: "trust" },
+    { name: t.nav.contact, id: "contact" },
+  ];
 
   React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
