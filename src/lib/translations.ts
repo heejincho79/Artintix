@@ -141,7 +141,7 @@ export const translations = {
       btnReload: "페이지 새로고침",
     },
     footer: {
-      rights: "© 2024 Artintix. All rights reserved.",
+      rights: "© 2026 Artintix. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
     },
@@ -288,7 +288,7 @@ export const translations = {
       btnReload: "Reload Page",
     },
     footer: {
-      rights: "© 2024 Artintix. All rights reserved.",
+      rights: "© 2026 Artintix. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
     },

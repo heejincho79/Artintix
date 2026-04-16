@@ -3,7 +3,7 @@ import { Globe2, Award, Users } from "lucide-react";
 import { useLanguage } from "../../lib/LanguageContext";
 
 export function WhyArtintix() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const PARTNERS = [
     "University of Nevada, Las Vegas (UNLV)",
@@ -40,11 +40,11 @@ export function WhyArtintix() {
              <div className="aspect-square rounded-full border border-gray-100 absolute inset-0 animate-spin-slow opacity-10" />
              <div className="aspect-square rounded-full border border-gray-100 absolute inset-10 animate-reverse-spin-slow opacity-10" />
              <div className="relative z-10 w-full aspect-[2/1] flex items-center justify-center overflow-hidden rounded-2xl bg-gray-50/50 border border-gray-100">
-                {/* World Map Image */}
+                {/* World Map Image - Using a clearer, more detailed map */}
                 <img 
-                   src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000" 
+                   src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200" 
                    alt="World Map" 
-                   className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale"
+                   className="absolute inset-0 w-full h-full object-cover opacity-30 grayscale brightness-125"
                    referrerPolicy="no-referrer"
                 />
                 
@@ -57,7 +57,7 @@ export function WhyArtintix() {
                          <stop offset="100%" stopColor="#00A3FF" stopOpacity="0" />
                       </linearGradient>
                       <filter id="glow">
-                         <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                         <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
                          <feMerge>
                             <feMergeNode in="coloredBlur"/>
                             <feMergeNode in="SourceGraphic"/>
@@ -65,12 +65,12 @@ export function WhyArtintix() {
                       </filter>
                    </defs>
 
-                   {/* Korea to USA */}
+                   {/* USA to Korea */}
                    <motion.path
-                      d="M830,180 Q490,50 150,180"
+                      d="M140,190 Q485,50 830,180"
                       fill="none"
                       stroke="url(#line-gradient)"
-                      strokeWidth="2"
+                      strokeWidth="3"
                       strokeDasharray="1000"
                       initial={{ strokeDashoffset: 1000 }}
                       animate={{ strokeDashoffset: -1000 }}
@@ -78,25 +78,12 @@ export function WhyArtintix() {
                       filter="url(#glow)"
                    />
 
-                   {/* Korea to Singapore */}
+                   {/* USA to Singapore */}
                    <motion.path
-                      d="M830,180 Q800,230 780,280"
+                      d="M140,190 Q460,400 780,300"
                       fill="none"
                       stroke="url(#line-gradient)"
-                      strokeWidth="2"
-                      strokeDasharray="200"
-                      initial={{ strokeDashoffset: 200 }}
-                      animate={{ strokeDashoffset: -200 }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                      filter="url(#glow)"
-                   />
-
-                   {/* Singapore to USA */}
-                   <motion.path
-                      d="M780,280 Q450,400 150,180"
-                      fill="none"
-                      stroke="url(#line-gradient)"
-                      strokeWidth="2"
+                      strokeWidth="3"
                       strokeDasharray="1000"
                       initial={{ strokeDashoffset: 1000 }}
                       animate={{ strokeDashoffset: -1000 }}
@@ -107,22 +94,23 @@ export function WhyArtintix() {
                    {/* Location Markers */}
                    {[
                       { id: 'korea', x: 830, y: 180, label: t.trust.map.korea },
-                      { id: 'usa', x: 150, y: 180, label: t.trust.map.usa },
-                      { id: 'singapore', x: 780, y: 280, label: t.trust.map.singapore }
+                      { id: 'usa', x: 140, y: 190, label: t.trust.map.usa },
+                      { id: 'singapore', x: 780, y: 300, label: t.trust.map.singapore }
                    ].map(loc => (
                       <g key={loc.id}>
                          <motion.circle 
-                            cx={loc.x} cy={loc.y} r="4" 
+                            cx={loc.x} cy={loc.y} r="6" 
                             fill="#00A3FF" 
                             initial={{ scale: 0 }}
                             animate={{ scale: [1, 1.5, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                          />
-                         <circle cx={loc.x} cy={loc.y} r="12" fill="#00A3FF" opacity="0.1" />
+                         <circle cx={loc.x} cy={loc.y} r="18" fill="#00A3FF" opacity="0.1" />
                          <text 
-                            x={loc.x} y={loc.y + 20} 
+                            x={loc.x} y={loc.y + 35} 
                             textAnchor="middle" 
-                            className="text-[10px] font-mono font-bold fill-brand-dark"
+                            className="text-[18px] font-mono font-black fill-brand-dark tracking-tighter"
+                            style={{ filter: 'drop-shadow(0px 0px 3px rgba(255,255,255,0.9))' }}
                          >
                             {loc.label}
                          </text>
