@@ -30,7 +30,7 @@ export const translations = {
       desc: "급변하는 에너지 시장과 강화되는 환경 규제 속에서, 데이터 기반의 최적화는 선택이 아닌 필수입니다.",
       items: [
         { title: "산업용 전기요금 상승", value: "연 20%↑", desc: "지속적인 에너지 비용 부담 가중" },
-        { title: "K-ETS 유상할당 확대", value: "2026년~", desc: "탄소 배출 규제 및 비용 압박 심화" },
+        { title: "글로벌 탄소 규제 강화", value: "Net Zero", desc: "탄소국경세(CBAM) 및 ESG 공시 의무화 대응" },
         { title: "에너지 낭비율", value: "평균 30%", desc: "비효율적인 운영으로 인한 손실" },
       ],
     },
@@ -177,7 +177,7 @@ export const translations = {
       desc: "In a rapidly changing energy market and strengthening environmental regulations, data-driven optimization is not an option but a necessity.",
       items: [
         { title: "Rising Industrial Electricity Rates", value: "20%↑ Annually", desc: "Increasing burden of energy costs" },
-        { title: "Expansion of K-ETS Paid Allocation", value: "From 2026", desc: "Intensifying carbon regulations and cost pressure" },
+        { title: "Global Carbon Regulations", value: "Net Zero", desc: "Response to CBAM and mandatory ESG disclosures" },
         { title: "Energy Waste Rate", value: "Avg 30%", desc: "Losses due to inefficient operations" },
       ],
     },
@@ -248,9 +248,9 @@ export const translations = {
     trust: {
       infraBadge: "Global Infrastructure",
       title1: "Global Tri-Hub:",
-      title2: "Korea, USA, Singapore",
-      desc: "Artintix is building a global technology network connecting Korea, USA, and Singapore. Each hub reflects real-time energy trends and supplies optimized solutions.",
-      cities: ["South Korea", "USA", "Singapore"],
+      title2: "USA, Korea, Singapore",
+      desc: "Artintix is building a global technology network connecting USA, Korea, and Singapore. Each hub reflects real-time energy trends and supplies optimized solutions.",
+      cities: ["USA", "South Korea", "Singapore"],
       map: {
         korea: "Korea",
         usa: "USA",

@@ -6,9 +6,9 @@ export function WhyArtintix() {
   const { t } = useLanguage();
 
   const PARTNERS = [
-    { name: "한국과학기술원 (KAIST)", logo: "https://storage.googleapis.com/static.antigravity.ai/projects/76afa242-8f02-41e8-b8c3-b2fee7e3e62e/attachments/1873375e-150d-428b-898d-133301c2b57f.png" },
-    { name: "국립한밭대학교", logo: "https://storage.googleapis.com/static.antigravity.ai/projects/76afa242-8f02-41e8-b8c3-b2fee7e3e62e/attachments/e3c1486f-0101-479c-8849-d669875f166b.png" },
-    { name: "University of Nevada, Las Vegas (UNLV)", logo: "https://storage.googleapis.com/static.antigravity.ai/projects/76afa242-8f02-41e8-b8c3-b2fee7e3e62e/attachments/2527126d-a37b-436d-a225-704805657b44.png" },
+    "University of Nevada, Las Vegas (UNLV)",
+    "Korea Advanced Institute of Science and Technology",
+    "Hanbat National University, South Korea",
   ];
 
   return (
@@ -142,15 +142,17 @@ export function WhyArtintix() {
             <h3 className="text-2xl font-bold text-brand-dark">{t.trust.partnerTitle}</h3>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all">
-            {PARTNERS.map((p, i) => (
-              <img 
-                key={i} 
-                src={p.logo} 
-                alt={p.name} 
-                className="h-8 md:h-12 object-contain"
-                referrerPolicy="no-referrer"
-              />
+          <div className="grid md:grid-cols-3 gap-6">
+            {PARTNERS.map((name, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ y: -5 }}
+                className="p-6 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-center min-h-[100px] hover:bg-white hover:shadow-xl hover:shadow-brand-blue/5 hover:border-brand-blue/20 transition-all duration-300"
+              >
+                <p className="text-sm font-bold text-gray-600 leading-snug">
+                  {name}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
