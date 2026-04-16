@@ -78,19 +78,6 @@ function ContactForm() {
         status: "new"
       });
       
-      // Construct mailto link
-      const subject = encodeURIComponent(`[Artintix Inquiry] ${formData.interest} from ${formData.company}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Company: ${formData.company}\n` +
-        `Interest: ${formData.interest}\n` +
-        `Free Audit Requested: ${formData.wantsAudit ? 'Yes' : 'No'}\n\n` +
-        `Message:\n${formData.message}`
-      );
-      
-      window.location.href = `mailto:inquiry@artintix.com?subject=${subject}&body=${body}`;
-      
       setStatus("success");
     } catch (error) {
       handleFirestoreError(error, OperationType.CREATE, path);
