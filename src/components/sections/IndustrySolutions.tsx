@@ -83,8 +83,8 @@ export function IndustrySolutions() {
           ))}
         </div>
 
-        <div className="glass-card p-8 md:p-12 min-h-[500px] flex flex-col lg:flex-row items-center gap-12 border-gray-100">
-          <div className="flex-1">
+        <div className="glass-card p-6 md:p-12 md:min-h-[500px] flex flex-col lg:flex-row items-center gap-8 lg:gap-12 border-gray-100">
+          <div className="flex-1 w-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -97,14 +97,14 @@ export function IndustrySolutions() {
                   <activeData.icon className="w-3 h-3" />
                   {activeData.name}
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6 text-brand-dark leading-tight">{activeData.title}</h3>
-                <p className="text-xl text-gray-500 leading-relaxed mb-10">
+                <h3 className="text-xl md:text-4xl font-bold mb-3 md:mb-6 text-brand-dark leading-tight">{activeData.title}</h3>
+                <p className="text-sm md:text-xl text-gray-500 leading-relaxed mb-6 md:mb-10">
                   {activeData.desc}
                 </p>
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-baseline gap-4">
-                    <span className="text-7xl font-bold text-brand-neon neon-text-glow">{activeData.metric}</span>
-                    <span className="text-lg font-bold text-gray-400 uppercase tracking-widest">
+                  <div className="flex items-baseline gap-2 md:gap-4">
+                    <span className="text-4xl md:text-7xl font-bold text-brand-neon neon-text-glow">{activeData.metric}</span>
+                    <span className="text-[10px] md:text-lg font-bold text-gray-400 uppercase tracking-widest">
                       {activeData.metricLabel}
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export function IndustrySolutions() {
             <motion.div 
               whileHover={{ rotateX: 2, rotateY: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="aspect-square lg:aspect-video bg-[#0A0F1A] rounded-3xl border border-white/10 relative overflow-hidden flex items-center justify-center p-8 shadow-2xl perspective-1000"
+              className="aspect-video bg-[#0A0F1A] rounded-3xl border border-white/10 relative overflow-hidden flex items-center justify-center p-4 md:p-8 shadow-2xl perspective-1000"
             >
               {/* Background Grid */}
               <div className="absolute inset-0 opacity-10" style={{ 
